@@ -1,29 +1,6 @@
 #include <string.h>
 
-/* code for max 7219 from maxim,
-reduced and optimised for using more than one 7219 in a row,
-______________________________________
- 
-General notes:
- 
--if you are only using one max7219, then use the function maxSingle to control
- the little guy ---maxSingle(register (1-8), collum (0-255))
- 
--if you are using more than one max7219, and they all should work the same,
-then use the function maxAll ---maxAll(register (1-8), collum (0-255))
- 
--if you are using more than one max7219 and just want to change something
-at one little guy, then use the function maxOne
----maxOne(Max you want to control (1== the first one), register (1-8),
-column (0-255))
- 
-During initiation, be sure to send every part to every max7219 and then
-upload it.
-For example, if you have five max7219's, you have to send the scanLimit 5 times
-before you load it-- otherwise not every max7219 will get the data. the
-function maxInUse keeps track of this, just tell it how many max7219 you are
-using.
-*/
+// original based on http://playground.arduino.cc/LEDMatrix/Max7219
 
 // pins
 int dataIn = 2;
@@ -307,11 +284,7 @@ void display_bitmap(unsigned char* bitmap)
     maxSingle(col, bitmap[col-1]);
   }
 }
-
-
-
-
-     
+  
 void setup () 
 {
   pinMode(dataIn, OUTPUT);
@@ -332,19 +305,12 @@ void setup ()
   
   maxAll(max7219_reg_intensity, 0x0f & 0x01);    // the first 0x0f is the value you can set
                                                  // range: 0x00 to 0x0f
-
-  
 }  
      
 void loop () 
 {
   /*display_symbol("poop");
-  delay(letter_display_time);
-  display_space();
   delay(letter_display_time);*/
   display_string("\xc2");
-
-
-
 }
 
