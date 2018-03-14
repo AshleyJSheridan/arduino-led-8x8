@@ -30,8 +30,10 @@ For characters outside of the standard ANSI, (e.g. beer, heart, and poop) there 
 The calls to each can be mixed together in any combination, either within the `loop()` to repeat a message/display, or within the `setup()` method to run once.
 
 ## Examples
+```c++
 display_string("Wine smells better than ");
 display_symbol("poop");
+```
 
 ## Future Improvements
 Going forward, I'd like to make some of the following updates:
